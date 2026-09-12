@@ -75,9 +75,4 @@ VITE_API_URL=http://127.0.0.1:8000/api
 VITE_WS_URL=ws://127.0.0.1:8000/ws/tickets/
 ```
 
-## What I'd add next
 
-- Redis-backed channel layer for multi-process production deployments
-- Email or SMS notifications when a ticket is assigned or resolved
-- A proper password-reset flow (currently a placeholder pointing staff to contact IT directly, matching how most hospital systems actually handle this)
-- Pagination on the ticket list for larger datasets
