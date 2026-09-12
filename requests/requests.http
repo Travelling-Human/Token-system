@@ -1,0 +1,104 @@
+@baseUrl = http://127.0.0.1:8000/api
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MDcyMTA3LCJpYXQiOjE3ODkwNzE4MDcsImp0aSI6IjExMTgwYzYwZmRhNTQ0Zjc4YTQ1NzA4NDIxMzA0ZDNiIiwidXNlcl9pZCI6IjIifQ.MSNgHsY7eBxNB6YBMsF1QbSZVRB81GJ3wKmuaSiwEJY
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4OTE1ODIwNywiaWF0IjoxNzg5MDcxODA3LCJqdGkiOiI4YTdmYTgzYjljNzc0NzRlOTJmMjZhOWYzOTM4Y2IyYyIsInVzZXJfaWQiOiIyIn0.iAFTakV-CRtJ5t4ful-6szZ1tJOztEgMvvpI5O6SXZQ
+
+### Register a new user
+POST {{baseUrl}}/auth/register/
+Content-Type: application/json
+
+{
+  "username": "teststaff",
+  "password": "testpass123"
+}
+
+### Login (copy the "access" and "refresh" values into the variables above)
+POST {{baseUrl}}/auth/token/
+Content-Type: application/json
+
+{
+  "username": "teststaff",
+  "password": "testpass123"
+}
+
+
+### Login (copy the "access" and "refresh" values into the variables above)
+POST {{baseUrl}}/auth/token/
+Content-Type: application/json
+
+{
+  "username": "T000",
+  "password": "T000@123"
+}
+
+
+### Refresh access token
+POST {{baseUrl}}/auth/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4OTE1ODIwNywiaWF0IjoxNzg5MDcxODA3LCJqdGkiOiI4YTdmYTgzYjljNzc0NzRlOTJmMjZhOWYzOTM4Y2IyYyIsInVzZXJfaWQiOiIyIn0.iAFTakV-CRtJ5t4ful-6szZ1tJOztEgMvvpI5O6SXZQ"
+}
+
+### List categories (create at least one in Django admin first)
+GET {{baseUrl}}/categories/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+
+### Create a ticket
+POST {{baseUrl}}/tickets/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+Content-Type: application/json
+
+{
+  "title": "Printer offline",
+  "description": "Ward 3 printer not responding",
+  "priority": "high",
+  "category": 1
+}
+
+### List my tickets
+GET {{baseUrl}}/tickets/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+
+### Get one ticket by id
+GET {{baseUrl}}/tickets/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+
+### Update ticket status
+PATCH {{baseUrl}}/tickets/1/update_status/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+Content-Type: application/json
+
+{
+  "status": "in_progress"
+}
+
+### Assign ticket (admin role only)
+PATCH {{baseUrl}}/tickets/1/assign/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+Content-Type: application/json
+
+{
+  "assigned_to": 2
+}
+
+### Add a comment to a ticket
+POST {{baseUrl}}/tickets/1/comments/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+Content-Type: application/json
+
+{
+  "message": "Checked - printer needs a new toner cartridge."
+}
+
+### List comments on a ticket
+GET {{baseUrl}}/tickets/1/comments/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+
+### Dashboard stats
+GET {{baseUrl}}/dashboard/stats/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
+
+
+### Completed tickets
+GET {{baseUrl}}/tickets/completed/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg5MTQ4OTgwLCJpYXQiOjE3ODkxNDg2ODAsImp0aSI6ImI4MmExODg5NmRkOTQ1ODViNzQ5MDBiODdiMWMzYTkxIiwidXNlcl9pZCI6IjIifQ.JmN_lhEeDfzQ5arYSachRwMDXHveuCnAH_RfGABzdZM
