@@ -2,8 +2,8 @@
 
 A full-stack ticketing system for tracking IT support requests and equipment inventory inside a hospital, built after direct experience working hospital IT support myself.
 
-**Live demo:** _add your Vercel URL here_
-**Backend API:** _add your Render URL here_
+**Live demo:** https://tokensys-frontend.vercel.app/
+**Backend API:** https://token-system-snfv.onrender.com
 
 ## Why this exists
 
